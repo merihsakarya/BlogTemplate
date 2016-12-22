@@ -15,40 +15,40 @@ import com.blog.template.enums.RoleEnum;
 @Entity
 public class CustomerRole {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	
-	@Enumerated(EnumType.STRING)
-	private RoleEnum role;
-	
-	@JsonBackReference
-	@ManyToOne
-	@JoinColumn(name="customer_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    
+    @Enumerated(EnumType.STRING)
+    private RoleEnum role;
+    
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name="customer_id")
     public Customer customer;
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public RoleEnum getRole() {
-		return role;
-	}
+    public RoleEnum getRole() {
+        return role;
+    }
 
-	public void setRole(RoleEnum role) {
-		this.role = role;
-	}
+    public void setRole(RoleEnum role) {
+        this.role = role;
+    }
 
-	public Customer getCustomer() {
-		return customer;
-	}
+    public Customer getCustomer() {
+        return customer;
+    }
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
 }

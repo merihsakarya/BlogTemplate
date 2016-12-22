@@ -18,82 +18,82 @@ import com.blog.template.entity.CustomerRole;
  */
 public class CustomUser implements UserDetails {
  
-	private static final long serialVersionUID = 1L;
-	
-	private Customer customer;
-	
-	public CustomUser(Customer customer) {
-		this.customer = customer;
-	}
-	
-	/**
-	 * Retrieves a collection of {@link GrantedAuthority} based on a numerical role
-	 * @param role the numerical role
-	 * @return a collection of {@link GrantedAuthority
-	 */
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> authList = getGrantedAuthorities(getRoles(customer.getRoles()));
-		return authList;
-	}
-	
-	/**
-	 * Converts a numerical role to an equivalent list of roles
-	 * @param role the numerical role
-	 * @return list of roles as as a list of {@link String}
-	 */
-	public List<String> getRoles(List<CustomerRole> customerRoles) {
-		List<String> roles = new ArrayList<String>();
-		
-		for (CustomerRole role : customerRoles) {
-			roles.add(role.getRole().getLabel());
-		}
-		
-		return roles;
-	}
+    private static final long serialVersionUID = 1L;
+    
+    private Customer customer;
+    
+    public CustomUser(Customer customer) {
+        this.customer = customer;
+    }
+    
+    /**
+     * Retrieves a collection of {@link GrantedAuthority} based on a numerical role
+     * @param role the numerical role
+     * @return a collection of {@link GrantedAuthority
+     */
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authList = getGrantedAuthorities(getRoles(customer.getRoles()));
+        return authList;
+    }
+    
+    /**
+     * Converts a numerical role to an equivalent list of roles
+     * @param role the numerical role
+     * @return list of roles as as a list of {@link String}
+     */
+    public List<String> getRoles(List<CustomerRole> customerRoles) {
+        List<String> roles = new ArrayList<String>();
+        
+        for (CustomerRole role : customerRoles) {
+            roles.add(role.getRole().getLabel());
+        }
+        
+        return roles;
+    }
 
-	/**
-	 * Wraps {@link String} roles to {@link SimpleGrantedAuthority} objects
-	 * @param roles {@link String} of roles
-	 * @return list of granted authorities
-	 */
-	public static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
-		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		for (String role : roles) {
-			authorities.add(new SimpleGrantedAuthority(role));
-		}
-		return authorities;
-	}
+    /**
+     * Wraps {@link String} roles to {@link SimpleGrantedAuthority} objects
+     * @param roles {@link String} of roles
+     * @return list of granted authorities
+     */
+    public static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        for (String role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role));
+        }
+        return authorities;
+    }
  
-	public String getPassword() {
-		return customer.getPassword();
-	}
+    public String getPassword() {
+        return customer.getPassword();
+    }
  
-	public String getUsername() {
-		return customer.getEmail();
-	}
+    public String getUsername() {
+        return customer.getEmail();
+    }
  
-	public boolean isAccountNonExpired() {
-		return true;
-	}
+    public boolean isAccountNonExpired() {
+        return true;
+    }
  
-	public boolean isAccountNonLocked() {
-		return true;
-	}
+    public boolean isAccountNonLocked() {
+        return true;
+    }
  
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
  
-	public boolean isEnabled() {
-		return true;
-	}
+    public boolean isEnabled() {
+        return true;
+    }
 
-	public Customer getCustomer() {
-		return customer;
-	}
+    public Customer getCustomer() {
+        return customer;
+    }
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
 }

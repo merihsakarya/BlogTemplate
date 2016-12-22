@@ -25,118 +25,118 @@ import com.blog.template.serilizer.BlogSerializer;
 @Entity
 @JsonSerialize(using=BlogSerializer.class)
 public class Blog {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@NotNull
-	private String 	subject;
-	
-	@NotNull
-	@Lob
-	@Column(columnDefinition = "text")
-	private String 	text;
-	
-	private String profileImage;
-	
-	@NotNull
-	private boolean active;
-	
-	@NotNull
-	private Date createdDate;
-	
-	@NotNull
-	private Date updatedDate;
-	
-	/**
-	 * Status given By ADMIN. (Confirmation Status)
-	 * 1- PENDING
-	 * 2- APPROVED_BY_ADMIN
-	 * 3- REJECTED_BY_ADMIN
-	 */
-	@JsonIgnore
-	@NotNull
-	private Integer status;
-	
-	@NotNull
-	@JsonIgnoreProperties(ignoreUnknown=true)
-	@JsonInclude(Include.NON_NULL)
-	@JsonBackReference
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="company_id")
-	private Customer customer;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @NotNull
+    private String  subject;
+    
+    @NotNull
+    @Lob
+    @Column(columnDefinition = "text")
+    private String  text;
+    
+    private String profileImage;
+    
+    @NotNull
+    private boolean active;
+    
+    @NotNull
+    private Date createdDate;
+    
+    @NotNull
+    private Date updatedDate;
+    
+    /**
+     * Status given By ADMIN. (Confirmation Status)
+     * 1- PENDING
+     * 2- APPROVED_BY_ADMIN
+     * 3- REJECTED_BY_ADMIN
+     */
+    @JsonIgnore
+    @NotNull
+    private Integer status;
+    
+    @NotNull
+    @JsonIgnoreProperties(ignoreUnknown=true)
+    @JsonInclude(Include.NON_NULL)
+    @JsonBackReference
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="company_id")
+    private Customer customer;
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getSubject() {
-		return subject;
-	}
+    public String getSubject() {
+        return subject;
+    }
 
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public String getText() {
+        return text;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public void setText(String text) {
+        this.text = text;
+    }
 
-	public String getProfileImage() {
-		return profileImage;
-	}
+    public String getProfileImage() {
+        return profileImage;
+    }
 
-	public void setProfileImage(String profileImage) {
-		this.profileImage = profileImage;
-	}
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
 
-	public boolean isActive() {
-		return active;
-	}
+    public boolean isActive() {
+        return active;
+    }
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
+    public Date getCreatedDate() {
+        return createdDate;
+    }
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
 
-	public Date getUpdatedDate() {
-		return updatedDate;
-	}
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
 
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
-	}
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
 
-	public Integer getStatus() {
-		return status;
-	}
+    public Integer getStatus() {
+        return status;
+    }
 
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
-	public Customer getCustomer() {
-		return customer;
-	}
+    public Customer getCustomer() {
+        return customer;
+    }
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
 }

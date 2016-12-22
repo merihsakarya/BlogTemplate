@@ -13,8 +13,8 @@ import com.blog.template.resource.BlogResource;
 public class ApplicationConfig extends ResourceConfig {
 
     public ApplicationConfig() {
-    	register(MultiPartFeature.class);
-    	/** End Points **/ 
+        register(MultiPartFeature.class);
+        /** End Points **/ 
         register(BlogResource.class);       
     }
 }

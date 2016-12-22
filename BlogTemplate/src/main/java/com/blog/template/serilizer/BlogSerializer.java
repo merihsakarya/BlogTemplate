@@ -15,30 +15,30 @@ import com.blog.template.entity.Blog;
 
 public class BlogSerializer extends JsonSerializer<Blog> {
 
-	@Override
-	public void serialize(Blog blog, JsonGenerator jsonGenerator,
-		SerializerProvider provider) throws IOException,
-		JsonProcessingException {
+    @Override
+    public void serialize(Blog blog, JsonGenerator jsonGenerator,
+        SerializerProvider provider) throws IOException,
+        JsonProcessingException {
 
-		jsonGenerator.writeStartObject(); 
-		jsonGenerator.writeNumberField("id", blog.getId());
-		jsonGenerator.writeStringField("subject", blog.getSubject());
-		jsonGenerator.writeStringField("text", blog.getText());
-		
-		if(blog.getProfileImage() == null || blog.getProfileImage() == ""){
-			jsonGenerator.writeStringField("image", "img/cus-avatar.png");
-		} else {
-			jsonGenerator.writeStringField("image", blog.getProfileImage());
-		}			
-		
-		Date createdDate = blog.getCreatedDate();
-		Instant instant = Instant.ofEpochMilli(createdDate.getTime());
-		LocalDateTime localCreatedDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());		
-		String absoluteDate = localCreatedDateTime.format(DateTimeFormatter.ofPattern("dd MMM uuuu"));
-		jsonGenerator.writeStringField("timestamp", absoluteDate);
-		
-		jsonGenerator.writeBooleanField("active", blog.isActive());
-		
+        jsonGenerator.writeStartObject(); 
+        jsonGenerator.writeNumberField("id", blog.getId());
+        jsonGenerator.writeStringField("subject", blog.getSubject());
+        jsonGenerator.writeStringField("text", blog.getText());
+        
+        if(blog.getProfileImage() == null || blog.getProfileImage() == ""){
+            jsonGenerator.writeStringField("image", "img/cus-avatar.png");
+        } else {
+            jsonGenerator.writeStringField("image", blog.getProfileImage());
+        }           
+        
+        Date createdDate = blog.getCreatedDate();
+        Instant instant = Instant.ofEpochMilli(createdDate.getTime());
+        LocalDateTime localCreatedDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());      
+        String absoluteDate = localCreatedDateTime.format(DateTimeFormatter.ofPattern("dd MMM uuuu"));
+        jsonGenerator.writeStringField("timestamp", absoluteDate);
+        
+        jsonGenerator.writeBooleanField("active", blog.isActive());
+        
         jsonGenerator.writeEndObject();
-	}
+    }
 }
